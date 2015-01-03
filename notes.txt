@@ -1,0 +1,22 @@
+
+
+
+find dual
+attack 
+shoot
+handle results
+leaderboards
+settings
+
+
+---------------------------------
+TODO
+
+
+
+
+FUTURE TODO
+- How are session stats from previous battles passed back and stored locally
+
+NOTES
+This is going to require some sort of push ability from the cloud so I can update things in real time. 
