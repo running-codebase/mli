@@ -1,14 +1,6 @@
 
 
 
-find dual
-attack 
-shoot
-handle results
-leaderboards
-settings
-
-
 ---------------------------------
 TODO
 
@@ -17,6 +9,36 @@ TODO
 
 FUTURE TODO
 - How are session stats from previous battles passed back and stored locally
+- leaderboard 
+- Settings
+
+
 
 NOTES
 This is going to require some sort of push ability from the cloud so I can update things in real time. 
+
+
+
+------------------------------------------
+Scratch
+So what should I work on now. 
+The firs logical thing seems to be the login. For that I need to create the google app engine app and start getting the enpoint up and running
+Alternatively I could work on some of the UI and get the thing up and for the user interaction. I could also add the basic 
+
+What if for now I didnt do it with tabs but I just had a main screen and the ability to jump around. Everything happens at the application level so its fine. 
+
+So for now I will just return Dummy data and get the cloud end point set up later. 
+
+
+
+One Screen 
+
+Sign up and create an account are a pop up. 
+
+- pop up with two options
+- create account and sign in both with stay signed in check boxes
+
+
+Main screen 
+- player info
+- combat screen 

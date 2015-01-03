@@ -8,9 +8,194 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ca.travis.awesome.mli.MainActivity$PlaceholderFragment" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <RelativeLayout
+        android:id="@+id/player_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/center_point_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/center_point_layout"
+        android:background="@color/LightGrey" >
 
+        <RelativeLayout
+            android:id="@+id/user_title_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_alignParentTop="true">
+
+	        <TextView
+	            android:id="@+id/txtview_user_label"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="Player Info " />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/user_name_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@+id/user_title_layout">
+        	
+
+	        <TextView
+	            android:id="@+id/txtview_user_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="User: " />
+
+	        <TextView
+	            android:id="@+id/txtView_user"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_user_label"
+	            android:text="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/status_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@id/user_name_layout">
+
+	        <TextView
+	            android:id="@+id/txtview_status_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="Status: " />
+
+	        <TextView
+	            android:id="@+id/txtView_status"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_status_label"
+	            android:text="" />
+        </RelativeLayout>
+        
+
+        <RelativeLayout
+            android:id="@+id/weapon_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@+id/status_layout">
+
+	        <TextView
+	            android:id="@+id/txtview_weapon_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="Weapon: " />
+
+	        <TextView
+	            android:id="@+id/txtView_weapon"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_weapon_label"
+	            android:text="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cash_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@+id/weapon_layout">
+
+	        <TextView
+	            android:id="@+id/txtview_cash_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="Cash: " />
+
+	        <TextView
+	            android:id="@+id/txtView_cash"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_cash_label"
+	            android:text="" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/winloss_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@+id/cash_layout">
+
+	        <TextView
+	            android:id="@+id/txtview_winloss_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="Win / Loss: " />
+
+	        <TextView
+	            android:id="@+id/txtView_winloss"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_winloss_label"
+	            android:text="" />
+        </RelativeLayout>
+        
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/combat_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/center_point_layout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/center_point_layout"
+        android:background="@color/LightGrey" >
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/compass_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/center_point_layout"
+        android:background="@color/LightGrey" >
+
+    </RelativeLayout>
+    
+    
+    <RelativeLayout
+        android:id="@+id/center_point_layout"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="true"
+        android:background="@color/Aquamarine" >
+
+    </RelativeLayout>
+    
+    
+    
 </RelativeLayout>
