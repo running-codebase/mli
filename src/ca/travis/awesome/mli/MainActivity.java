@@ -12,8 +12,13 @@ import ca.travis.awesome.mli.DialogCreateUserFragment.CreateUserInterface;
 import ca.travis.awesome.mli.DialogCreateUserOrLoginFragment.CreateUserOrLoginInterface;
 import ca.travis.awesome.mli.DialogLoginFragment.LoginInterface;
 
-public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface{
+public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface {
 
+	
+	private Player player; //The user class
+	
+	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +30,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
                     .commit();
         }
 
-        DialogCreateUserOrLoginFragment dialog = new DialogCreateUserOrLoginFragment();
-		dialog.setCancelable(false);
-		dialog.show(getFragmentManager(), "CREATE_USER_OR_LOGIN"); 
-		
+        showLoginDialog();
     }
 
 
@@ -52,12 +54,6 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
         return super.onOptionsItemSelected(item);
     }
 
-    
-    
-    
-    
-    
-    
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -75,6 +71,24 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     }
 
 
+    private void showLoginDialog() {
+        DialogCreateUserOrLoginFragment dialog = new DialogCreateUserOrLoginFragment();
+		dialog.setCancelable(false);
+		dialog.show(getFragmentManager(), "CREATE_USER_OR_LOGIN"); 
+    }
+    
+    private boolean logUserIn(String userName, String password) {
+    	
+    	String loginResults = CloudApi.login(userName, password);
+    	//Parse the JsonObject
+    	
+    	//If successful pass it to the object
+    	//populate the view with the values
+		//save the boolean so we auto login in the future
+    			
+    	
+    	return true;
+    }
 
 
     //CreateUserOrLoginInterface
@@ -91,16 +105,16 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 		dialog.show(getFragmentManager(), "CREATE_USER"); 
 	}
 
+	
     //CreateUserInterface
 	@Override
 	public boolean onCreateUser(String userName, String password,
 			Boolean stayLoggedIn) {
-		// TODO -- perform the create user 
+		
+		//TODO - make the api call
+		//Create the things required to be logged in
+		//save the boolean so we auto login in the future
 		return false;
-	}
-	@Override
-	public void createUserSucceded() {
-		// TODO - log the user in
 	}
 	@Override
 	public void createUserWasCancelled() {
@@ -114,8 +128,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 	@Override
 	public boolean onLogin(String userName, String password,
 			Boolean stayLoggedIn) {
-		// TODO - log the user in
-		return false;
+		return logUserIn(userName, password);
 	}
 	@Override
 	public void loginCancelled() {

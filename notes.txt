@@ -3,7 +3,16 @@
 
 ---------------------------------
 TODO
-
+- create the fake JSON
+- return it as a string
+- create handler for success and fail on both create user and login
+- create the json parser in the player class that assigns the variables
+- populate the screen for the returned data
+- find combat api dummy data and return parsing
+- attack button api call dummy data and return handeling
+- Long, Lat, Orientation wrapper
+- calculate distance to other point
+- calculate direction to other point
 
 
 
@@ -30,29 +39,31 @@ What if for now I didnt do it with tabs but I just had a main screen and the abi
 So for now I will just return Dummy data and get the cloud end point set up later. 
 
 
-
-One Screen 
-
-Sign up and create an account are a pop up. 
-
-- pop up with two options
-- create account and sign in both with stay signed in check boxes
-
-
 Main screen 
 - player info
 - combat screen 
-
-
-So what is the next step. the idea is a minimal functional product. No image yet
-
-Login makes the most sense for the next thing
-Once I have login then I can return a user object
 
 Combat button that starts a combat
 
 
 
+User object
+
+user {
+	user_name : name
+	user_id : id
+	session_id : id
+	user_alive : true
+	wins: 0
+	losses: 0
+	weapon: 1
+	cash: 0
+	in_combat: false
+	dual_id : 0
+	}
+	
+	
+	
 
 
 

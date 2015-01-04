@@ -2,7 +2,7 @@ package ca.travis.awesome.mli;
 
 public class CloudApi {
 
-	public String createAccount(String userName, String HashedPassword) {
+	public static String createAccount(String userName, String HashedPassword) {
 		//Returns
 		//1. Success user object
 		//2. Fail (error)
@@ -10,7 +10,7 @@ public class CloudApi {
 		return "";
 	}
 
-	public String login(String userName, String hashedPassword) {
+	public static String login(String userName, String hashedPassword) {
 		//Returns
 		//1. Success user object
 		//2. Fail (error)
@@ -19,7 +19,7 @@ public class CloudApi {
 	}
 	
 	
-	public String findDual() { //try to get matched for duel
+	public static String findDual() { //try to get matched for duel
 		
 		//Returns 
 		//1. Dual available
@@ -28,7 +28,7 @@ public class CloudApi {
 		return "";
 	}
 
-	public String combatMode(/*coordinates, dual_id*/) {
+	public static String combatMode(/*coordinates, dual_id*/) {
 		//Returns
 		//1. Success you are in combat mode
 		//2. You are not in combat mode (error)
@@ -36,13 +36,13 @@ public class CloudApi {
 		return "";
 	}
 	
-	public String currentState(/*coordinates, dual_id*/) {
+	public static String currentState(/*coordinates, dual_id*/) {
 		//TODO - figure out the implementation for this later. 
 		return "";
 	}
 	
 	
-	public String attack(/*coordinates, dual_id*/) {
+	public static String attack(/*coordinates, dual_id*/) {
 		//Returns
 		//1. Success combat over
 		//2. Failure (error)

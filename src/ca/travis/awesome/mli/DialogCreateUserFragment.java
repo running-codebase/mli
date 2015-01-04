@@ -21,7 +21,6 @@ public class DialogCreateUserFragment extends DialogFragment {
 	
 	public interface CreateUserInterface {
 	    boolean onCreateUser(String userName, String password, Boolean stayLoggedIn); 
-	    void createUserSucceded();
 	    void createUserWasCancelled();
 	}
 
@@ -63,7 +62,6 @@ public class DialogCreateUserFragment extends DialogFragment {
 		            	   boolean results = activity.onCreateUser(userName.getText().toString(), password.getText().toString(), chkbxStayLoggedIn.isChecked());	 
 		            	   
 		            	   if (results) {
-		            		   activity.createUserSucceded();
 		            		   d.dismiss();
 		            	   } else {
 		            		   Toast.makeText(getActivity(), getResources().getString(R.string.create_user_failed), Toast.LENGTH_SHORT).show();
