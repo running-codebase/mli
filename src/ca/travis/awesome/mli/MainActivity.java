@@ -1,7 +1,6 @@
 package ca.travis.awesome.mli;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import ca.travis.awesome.mli.DialogCreateUserFragment.CreateUserInterface;
+import ca.travis.awesome.mli.DialogCreateUserOrLoginFragment.CreateUserOrLoginInterface;
+import ca.travis.awesome.mli.DialogLoginFragment.LoginInterface;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,11 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        DialogCreateUserOrLoginFragment dialog = new DialogCreateUserOrLoginFragment();
+		dialog.setCancelable(false);
+		dialog.show(getFragmentManager(), "CREATE_USER_OR_LOGIN"); 
+		
     }
 
 
@@ -67,5 +73,55 @@ public class MainActivity extends Activity {
             return rootView;
         }
     }
+
+
+
+
+    //CreateUserOrLoginInterface
+	@Override
+	public void onLoginButton() {
+		DialogLoginFragment dialog = new DialogLoginFragment();
+		dialog.setCancelable(false);
+		dialog.show(getFragmentManager(), "LOGIN"); 
+	}
+	@Override
+	public void onCreateUserButton() {
+		DialogCreateUserFragment dialog = new DialogCreateUserFragment();
+		dialog.setCancelable(false);
+		dialog.show(getFragmentManager(), "CREATE_USER"); 
+	}
+
+    //CreateUserInterface
+	@Override
+	public boolean onCreateUser(String userName, String password,
+			Boolean stayLoggedIn) {
+		// TODO -- perform the create user 
+		return false;
+	}
+	@Override
+	public void createUserSucceded() {
+		// TODO - log the user in
+	}
+	@Override
+	public void createUserWasCancelled() {
+		  DialogCreateUserOrLoginFragment dialog = new DialogCreateUserOrLoginFragment();
+		  dialog.setCancelable(false);
+		  dialog.show(getFragmentManager(), "CREATE_USER_OR_LOGIN"); 
+	}
+
+
+	//LoginInterface
+	@Override
+	public boolean onLogin(String userName, String password,
+			Boolean stayLoggedIn) {
+		// TODO - log the user in
+		return false;
+	}
+	@Override
+	public void loginCancelled() {
+		  DialogCreateUserOrLoginFragment dialog = new DialogCreateUserOrLoginFragment();
+		  dialog.setCancelable(false);
+		  dialog.show(getFragmentManager(), "CREATE_USER_OR_LOGIN"); 
+	}
 
 }

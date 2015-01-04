@@ -183,32 +183,41 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
-        public static final int cash_layout=0x7f09000d;
-        public static final int center_point_layout=0x7f090002;
-        public static final int combat_info_layout=0x7f090013;
-        public static final int compass_layout=0x7f090014;
+        public static final int action_settings=0x7f09001b;
+        public static final int btn_create_user=0x7f090006;
+        public static final int btn_login=0x7f090005;
+        public static final int cash_layout=0x7f090013;
+        public static final int center_point_layout=0x7f090008;
+        public static final int chkbx_stay_logged_in=0x7f090004;
+        public static final int combat_info_layout=0x7f090019;
+        public static final int compass_layout=0x7f09001a;
         public static final int container=0x7f090000;
-        public static final int player_info_layout=0x7f090001;
-        public static final int status_layout=0x7f090007;
-        public static final int txtView_cash=0x7f09000f;
-        public static final int txtView_status=0x7f090009;
-        public static final int txtView_user=0x7f090006;
-        public static final int txtView_weapon=0x7f09000c;
-        public static final int txtView_winloss=0x7f090012;
-        public static final int txtview_cash_label=0x7f09000e;
-        public static final int txtview_status_label=0x7f090008;
-        public static final int txtview_user_label=0x7f090004;
-        public static final int txtview_weapon_label=0x7f09000b;
-        public static final int txtview_winloss_label=0x7f090011;
-        public static final int user_name_layout=0x7f090005;
-        public static final int user_title_layout=0x7f090003;
-        public static final int weapon_layout=0x7f09000a;
-        public static final int winloss_layout=0x7f090010;
+        public static final int password=0x7f090003;
+        public static final int player_info_layout=0x7f090007;
+        public static final int status_layout=0x7f09000d;
+        public static final int txtView_cash=0x7f090015;
+        public static final int txtView_status=0x7f09000f;
+        public static final int txtView_user=0x7f09000c;
+        public static final int txtView_weapon=0x7f090012;
+        public static final int txtView_winloss=0x7f090018;
+        public static final int txt_title=0x7f090001;
+        public static final int txtview_cash_label=0x7f090014;
+        public static final int txtview_status_label=0x7f09000e;
+        public static final int txtview_user_label=0x7f09000a;
+        public static final int txtview_weapon_label=0x7f090011;
+        public static final int txtview_winloss_label=0x7f090017;
+        public static final int user_name=0x7f090002;
+        public static final int user_name_layout=0x7f09000b;
+        public static final int user_title_layout=0x7f090009;
+        public static final int weapon_layout=0x7f090010;
+        public static final int winloss_layout=0x7f090016;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int fragment_main=0x7f030001;
+        public static final int fragment_create_user=0x7f030001;
+        public static final int fragment_create_user_or_login=0x7f030002;
+        public static final int fragment_login=0x7f030003;
+        public static final int fragment_main=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -216,7 +225,15 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
+        public static final int cancel=0x7f060004;
+        public static final int create_user=0x7f06000a;
+        public static final int create_user_failed=0x7f060007;
         public static final int hello_world=0x7f060001;
+        public static final int invalid_password=0x7f060006;
+        public static final int invalid_user_name=0x7f060005;
+        public static final int login=0x7f060009;
+        public static final int login_failed=0x7f060008;
+        public static final int ok=0x7f060003;
     }
     public static final class style {
         /** 

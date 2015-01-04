@@ -42,3 +42,21 @@ Sign up and create an account are a pop up.
 Main screen 
 - player info
 - combat screen 
+
+
+So what is the next step. the idea is a minimal functional product. No image yet
+
+Login makes the most sense for the next thing
+Once I have login then I can return a user object
+
+Combat button that starts a combat
+
+
+
+
+
+
+
+
+
+
