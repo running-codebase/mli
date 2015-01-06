@@ -12,6 +12,10 @@
     <string name="login_failed">Login failed. Please try again</string>
     <string name="login">Login</string>
     <string name="create_user">Create User</string>
+    <string name="find_dual">Find Dual</string>
+    <string name="combat_name">Combat Info</string>
+    <string name="enemy_name">Enemy Name: </string>
+    <string name="remaining_time">Dual Timer: </string>
     
     
     

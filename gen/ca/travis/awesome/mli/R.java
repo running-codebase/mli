@@ -183,25 +183,34 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001b;
+        public static final int action_settings=0x7f090024;
         public static final int btn_create_user=0x7f090006;
+        public static final int btn_find_combat=0x7f090019;
         public static final int btn_login=0x7f090005;
         public static final int cash_layout=0x7f090013;
         public static final int center_point_layout=0x7f090008;
         public static final int chkbx_stay_logged_in=0x7f090004;
-        public static final int combat_info_layout=0x7f090019;
-        public static final int compass_layout=0x7f09001a;
+        public static final int combat_info_layout=0x7f09001a;
+        public static final int combat_title_layout=0x7f09001b;
+        public static final int compass_layout=0x7f090023;
         public static final int container=0x7f090000;
+        public static final int enemy_name_layout=0x7f09001d;
         public static final int password=0x7f090003;
         public static final int player_info_layout=0x7f090007;
+        public static final int remaining_time_layout=0x7f090020;
         public static final int status_layout=0x7f09000d;
         public static final int txtView_cash=0x7f090015;
+        public static final int txtView_enemy_name=0x7f09001f;
+        public static final int txtView_remaining_time=0x7f090022;
         public static final int txtView_status=0x7f09000f;
         public static final int txtView_user=0x7f09000c;
         public static final int txtView_weapon=0x7f090012;
         public static final int txtView_winloss=0x7f090018;
         public static final int txt_title=0x7f090001;
         public static final int txtview_cash_label=0x7f090014;
+        public static final int txtview_combat_label=0x7f09001c;
+        public static final int txtview_enemy_name_label=0x7f09001e;
+        public static final int txtview_remaining_time_label=0x7f090021;
         public static final int txtview_status_label=0x7f09000e;
         public static final int txtview_user_label=0x7f09000a;
         public static final int txtview_weapon_label=0x7f090011;
@@ -226,14 +235,18 @@ public final class R {
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
         public static final int cancel=0x7f060004;
+        public static final int combat_name=0x7f06000c;
         public static final int create_user=0x7f06000a;
         public static final int create_user_failed=0x7f060007;
+        public static final int enemy_name=0x7f06000d;
+        public static final int find_dual=0x7f06000b;
         public static final int hello_world=0x7f060001;
         public static final int invalid_password=0x7f060006;
         public static final int invalid_user_name=0x7f060005;
         public static final int login=0x7f060009;
         public static final int login_failed=0x7f060008;
         public static final int ok=0x7f060003;
+        public static final int remaining_time=0x7f06000e;
     }
     public static final class style {
         /** 

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import ca.travis.awesome.mli.DialogCreateUserFragment.CreateUserInterface;
 import ca.travis.awesome.mli.DialogCreateUserOrLoginFragment.CreateUserOrLoginInterface;
@@ -68,7 +69,9 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     	public static TextView txtWeapon;
     	public static TextView txtCash;
     	public static TextView txtWinLoss;
-    	
+    	public static TextView txtEnemyName;
+    	public static TextView txtTimeRemaining;
+    	public static Button btnFindCombat;
     	
         public PlaceholderFragment() {
         }
@@ -81,8 +84,15 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
             txtStatus = (TextView) rootView.findViewById(R.id.txtView_status);
             txtWeapon = (TextView) rootView.findViewById(R.id.txtView_weapon);
             txtCash = (TextView) rootView.findViewById(R.id.txtView_cash);
-            txtWinLoss= (TextView) rootView.findViewById(R.id.txtView_winloss);
-
+            txtWinLoss = (TextView) rootView.findViewById(R.id.txtView_winloss);
+            txtEnemyName = (TextView) rootView.findViewById(R.id.txtView_enemy_name);
+            txtTimeRemaining = (TextView) rootView.findViewById(R.id.txtView_remaining_time);
+            btnFindCombat = (Button) rootView.findViewById(R.id.btn_find_combat);
+            
+            
+            //TODO - add click listener that gets that makes api call and populates data
+            
+            
             return rootView;
         }
     }

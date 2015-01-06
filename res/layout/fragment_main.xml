@@ -155,7 +155,15 @@
 	            android:layout_toRightOf="@+id/txtview_winloss_label"
 	            android:text="" />
         </RelativeLayout>
-        
+
+        <Button
+            android:id="@+id/btn_find_combat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/find_dual" />
         
     </RelativeLayout>
     
@@ -169,6 +177,76 @@
         android:layout_toRightOf="@id/center_point_layout"
         android:background="@color/LightGrey" >
 
+		<RelativeLayout
+            android:id="@+id/combat_title_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_alignParentTop="true">
+
+	        <TextView
+	            android:id="@+id/txtview_combat_label"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="@+string/combat_name" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/enemy_name_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@+id/combat_title_layout">
+        	
+	        <TextView
+	            android:id="@+id/txtview_enemy_name_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="@+string/enemy_name"
+	            android:textSize="10sp" />
+
+	        <TextView
+	            android:id="@+id/txtView_enemy_name"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_enemy_name_label"
+	            android:text=""
+	            android:textSize="10sp" />
+
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/remaining_time_layout"
+        	android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+        	android:layout_below="@+id/enemy_name_layout">
+        	
+	        <TextView
+	            android:id="@+id/txtview_remaining_time_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:text="@+string/remaining_time"
+	            android:textSize="10sp" />
+
+	        <TextView
+	            android:id="@+id/txtView_remaining_time"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_toRightOf="@+id/txtview_remaining_time_label"
+	            android:text=""
+	            android:textSize="10sp" />
+
+        </RelativeLayout>
+        
     </RelativeLayout>
     
     <RelativeLayout
