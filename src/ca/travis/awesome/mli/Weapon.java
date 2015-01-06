@@ -4,7 +4,7 @@ public class Weapon {
 	
 	private boolean fireable;
 
-	public Weapon() {
+	public Weapon(int id) {
 		fireable = true;
 	}
 	

@@ -14,5 +14,14 @@ public class DualLive {
 		//TODO - add implementation
 		return true;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getStartTime() {
+		return startTime;
+	}
+
 	
 }

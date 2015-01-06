@@ -3,12 +3,13 @@
 
 ---------------------------------
 TODO
-- create the fake JSON
-- return it as a string
+	- create the fake JSON
+	- return it as a string
 - create handler for success and fail on both create user and login
-- create the json parser in the player class that assigns the variables
-- populate the screen for the returned data
-- find combat api dummy data and return parsing
+	- create the json parser in the player class that assigns the variables
+	- populate the screen for the returned data
+- button to find combat
+- create combat api dummy data and return parsing
 - attack button api call dummy data and return handeling
 - Long, Lat, Orientation wrapper
 - calculate distance to other point
