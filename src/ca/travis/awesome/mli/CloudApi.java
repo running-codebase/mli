@@ -29,9 +29,8 @@ public class CloudApi {
 		    	"\"losses\": 0, " +
 		    	" \"weapon\": 1, " +
 		    	"\"cash\": 0, " +
-		    	"\"in_combat\": false} , " +
-		    	"\"dual\" : { \"dual_id\" : 123 , " +
-		    	" \"start_time\" : 1420519775157 }}";
+		    	"\"in_combat\": false , " +
+		    	"\"combat_id\" : 0 }}";
 		//Returns
 		//1. Success user object
 		//2. Fail (error)
@@ -40,13 +39,16 @@ public class CloudApi {
 	}
 	
 	
-	public static String findDual() { //try to get matched for duel
+	public static String findDual(int userId, int sessionId, LocationAndOrientation locationAndOrientation) { //try to get matched for duel
 		
+		String results = "{ \"dual\" : { \"dual_id\" : 111111, \"start_time\" : 111111, \"duration\" : 1111111 }, " +
+				" \"enemy\" : { \"enemy_id\" : 1111 , \"enemy_name\" : \"Grendar\", \"location_and_orientation\" : { \"long\" : 10.123, \"lat\" :10.123 , \"bearing\" : 90.0 , \"time_stamp\" : 1111 }}}";
+		
+		return results;
 		//Returns 
 		//1. Dual available
 		//2. Dual not available. You are on a list
 		//3. Network Error
-		return "";
 	}
 
 	public static String combatMode(/*coordinates, dual_id*/) {

@@ -19,9 +19,10 @@ public class Player {
 	private int cash;
 	private boolean alive;
 	private boolean inCombat;
+	private int combatId;
 	private Weapon weapon;
-	private DualLive dual;
 	private List<DualRecord> dualRecords = new ArrayList<DualRecord>();
+	private LocationAndOrientation locationAndOrientation;
 	
 	public Player () { //TODO - add the dictionary that contains the callback info when creating the user
 		//alive = true;
@@ -44,13 +45,9 @@ public class Player {
 			cash = user.getInt("cash");
 			weapon = new Weapon (user.getInt("weapon"));
 			inCombat = user.getBoolean("in_combat");
-
+			setCombatId(user.getInt("combat_id"));
 			
-			if (reader.has("dual")) {
-				Log.d("mli", "Parsing dual object");
-				JSONObject dualObject = reader.getJSONObject("dual");
-				dual = new DualLive(dualObject.getInt("dual_id"), dualObject.getInt("start_time"));
-			}
+			locationAndOrientation = new LocationAndOrientation();
 			
 			initilized = true;
     	} catch (JSONException e) {
@@ -62,15 +59,11 @@ public class Player {
 	}
 
 	public boolean canSendAttack() {
-		if (alive && dual.canAttack() && weapon.isFireable()) {
+		if (alive && weapon.isFireable() && inCombat) {
 			return true;
 		} else {
 			return false;
 		}
-	}
-	
-	public void createDual(int id, int startTime) { //TODO - maybe remove this
-		dual = new DualLive(id, startTime);
 	}
 	
 
@@ -118,13 +111,20 @@ public class Player {
 		return weapon;
 	}
 
-	public DualLive getDual() {
-		return dual;
-	}
-
 	public List<DualRecord> getDualRecords() {
 		return dualRecords;
 	}
 
+	public LocationAndOrientation getLocationAndOrientation() {
+		return locationAndOrientation;
+	}
+
+	public int getCombatId() {
+		return combatId;
+	}
+
+	public void setCombatId(int combatId) {
+		this.combatId = combatId;
+	}
 	
 }

@@ -12,15 +12,12 @@ import android.widget.TextView;
 
 public class MainFragment extends Fragment implements OnClickListener {
 
-	public interface OnItemSelectedFromShareFragment {
-//		public void launchShareTwitter();
-//		public void launchShareFacebook();
-//		public void launchShareText();
-//		public void launchShareEmail();
+	public interface MainFragmentInterface {
+		public void findDualBtnPressed();
+		
 	}
 
-	// private OnItemSelectedFromShareFragment callback;
-	//
+	 private MainFragmentInterface callback;
 	// private Context context;
 
 	private static TextView txtUser;
@@ -56,7 +53,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try {
-			// callback = (OnItemSelectedFromShareFragment) activity;
+			callback = (MainFragmentInterface) activity;
 		} catch (ClassCastException e) {
 			throw new ClassCastException(activity.toString()
 					+ " must implement OnItemSelected");
@@ -67,30 +64,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case (R.id.btn_find_combat):
-
+			callback.findDualBtnPressed();
 			break;
-
-		
-		// case(R.id.layout_facebook_holder):
-		// callback.launchShareFacebook();
-		// getActivity().getFragmentManager().popBackStack();
-		// break;
-		// case(R.id.layout_twitter_holder):
-		// callback.launchShareTwitter();
-		// getActivity().getFragmentManager().popBackStack();
-		// break;
-		// case(R.id.layout_email_holder):
-		// callback.launchShareEmail();
-		// getActivity().getFragmentManager().popBackStack();
-		// break;
-		// case(R.id.layout_text_holder):
-		// callback.launchShareText();
-		// getActivity().getFragmentManager().popBackStack();
-		// break;
-		// case(R.id.img_exit):
-		// getActivity().getFragmentManager().popBackStack();
-		// break;
-		// }
 		}
 	}
 	
@@ -104,6 +79,12 @@ public class MainFragment extends Fragment implements OnClickListener {
 		txtWeapon.setText("Wand");
 		txtCash.setText("" + player.getCash());
 		txtWinLoss.setText("" + player.getWins() + "/" + player.getLosses());
+	}
+	
+	public void populateCombat(Combat combat) {
+		
+		
+		
 	}
 	
 	

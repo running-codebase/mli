@@ -4,30 +4,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import ca.travis.awesome.mli.DialogCreateUserFragment.CreateUserInterface;
 import ca.travis.awesome.mli.DialogCreateUserOrLoginFragment.CreateUserOrLoginInterface;
 import ca.travis.awesome.mli.DialogLoginFragment.LoginInterface;
+import ca.travis.awesome.mli.MainFragment.MainFragmentInterface;
 
-public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface {
+public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface, MainFragmentInterface {
 
 	private FragmentManager fragmentManager;
 	private FragmentTransaction fragmentTransaction;
 
 	private MainFragment start_screen_fragment;
 	private Player player; //The user class
+	private Combat combat; 
 	
 	
     @Override
@@ -76,16 +71,12 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     private boolean logUserIn(String userName, String password) {
     	
     	String loginResults = CloudApi.login(userName, password);
-
     	if (loginResults != null) {
     		player = new Player();
     		player.populatePlayerFromJson(loginResults);
         	populatePlayerInfoUI();
     	}
-
-
     	//TODO - save the boolean so we auto login in the future
-    			
     	return true;
     }
     
@@ -94,7 +85,20 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     		start_screen_fragment.populatePlayer(player);
     	}
     }
+    
+    
+    private void findDual() {
 
+    	String findDualResults = CloudApi.findDual(player.getUserId(), player.getSessionId(), player.getLocationAndOrientation());
+    	//TODO - handle a case where there is no dual
+    	combat = new Combat(findDualResults);
+    	
+    }
+
+    private void poplateCombatInfoUI() {
+    	
+    }
+    
 
     //CreateUserOrLoginInterface
 	@Override
@@ -151,6 +155,12 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 		  DialogCreateUserOrLoginFragment dialog = new DialogCreateUserOrLoginFragment();
 		  dialog.setCancelable(false);
 		  dialog.show(getFragmentManager(), "CREATE_USER_OR_LOGIN"); 
+	}
+
+	//MainFragmentInterface
+	@Override
+	public void findDualBtnPressed() {
+		findDual();
 	}
 
 }

@@ -8,13 +8,22 @@ TODO
 - create handler for success and fail on both create user and login
 	- create the json parser in the player class that assigns the variables
 	- populate the screen for the returned data
-- button to find combat
-- create combat api dummy data and return parsing
+	- button to find combat
+	- create combat api dummy data and return parsing
+- create handler for no combat
+
+
+
 - attack button api call dummy data and return handeling
-- Long, Lat, Orientation wrapper
+	- Long, Lat, Orientation wrapper
+- fix up the clas to support actual values
+- get player long and lat
 - calculate distance to other point
 - calculate direction to other point
 
+
+	- nerf the dual opbject
+	- have it as just a boolean 
 
 
 FUTURE TODO
