@@ -5,12 +5,15 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,29 +23,33 @@ import ca.travis.awesome.mli.DialogLoginFragment.LoginInterface;
 
 public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface {
 
+	private FragmentManager fragmentManager;
+	private FragmentTransaction fragmentTransaction;
+
+	private MainFragment start_screen_fragment;
 	private Player player; //The user class
 	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-            
-        }
-
+        showMainFragment();
         showLoginDialog();
+    }
+    
+    private void showMainFragment() {
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        start_screen_fragment = new MainFragment();
+        fragmentTransaction.add(android.R.id.content, start_screen_fragment);
+        fragmentTransaction.commit();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -57,44 +64,6 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-    	public static TextView txtUser;
-    	public static TextView txtStatus;
-    	public static TextView txtWeapon;
-    	public static TextView txtCash;
-    	public static TextView txtWinLoss;
-    	public static TextView txtEnemyName;
-    	public static TextView txtTimeRemaining;
-    	public static Button btnFindCombat;
-    	
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            txtUser = (TextView) rootView.findViewById(R.id.txtView_user);
-            txtStatus = (TextView) rootView.findViewById(R.id.txtView_status);
-            txtWeapon = (TextView) rootView.findViewById(R.id.txtView_weapon);
-            txtCash = (TextView) rootView.findViewById(R.id.txtView_cash);
-            txtWinLoss = (TextView) rootView.findViewById(R.id.txtView_winloss);
-            txtEnemyName = (TextView) rootView.findViewById(R.id.txtView_enemy_name);
-            txtTimeRemaining = (TextView) rootView.findViewById(R.id.txtView_remaining_time);
-            btnFindCombat = (Button) rootView.findViewById(R.id.btn_find_combat);
-            
-            
-            //TODO - add click listener that gets that makes api call and populates data
-            
-            
-            return rootView;
-        }
     }
 
 
@@ -122,15 +91,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     
     private void populatePlayerInfoUI() {
     	if (player.isInitilized()) {
-    		PlaceholderFragment.txtUser.setText(player.getUserName());    		
-    		if (player.isAlive()){
-    			PlaceholderFragment.txtStatus.setText("Alive");
-    		} else {
-    			PlaceholderFragment.txtStatus.setText("Dead");
-    		}
-    		PlaceholderFragment.txtWeapon.setText("Wand");
-    		PlaceholderFragment.txtCash.setText("" + player.getCash());
-    		PlaceholderFragment.txtWinLoss.setText("" + player.getWins() + "/" + player.getLosses());
+    		start_screen_fragment.populatePlayer(player);
     	}
     }
 
