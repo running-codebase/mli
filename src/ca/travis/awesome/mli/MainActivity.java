@@ -20,7 +20,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 	private FragmentManager fragmentManager;
 	private FragmentTransaction fragmentTransaction;
 
-	private MainFragment start_screen_fragment;
+	private MainFragment startScreenFragment;
 	private Player player; //The user class
 	private Combat combat; 
 	
@@ -36,8 +36,8 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     private void showMainFragment() {
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        start_screen_fragment = new MainFragment();
-        fragmentTransaction.add(android.R.id.content, start_screen_fragment);
+        startScreenFragment = new MainFragment();
+        fragmentTransaction.add(android.R.id.content, startScreenFragment);
         fragmentTransaction.commit();
     }
 
@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     
     private void populatePlayerInfoUI() {
     	if (player.isInitilized()) {
-    		start_screen_fragment.populatePlayer(player);
+    		startScreenFragment.populatePlayer(player);
     	}
     }
     
@@ -92,11 +92,12 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     	String findDualResults = CloudApi.findDual(player.getUserId(), player.getSessionId(), player.getLocationAndOrientation());
     	//TODO - handle a case where there is no dual
     	combat = new Combat(findDualResults);
+    	poplateCombatInfoUI();
     	
     }
 
     private void poplateCombatInfoUI() {
-    	
+    	startScreenFragment.populateCombat(combat);
     }
     
 

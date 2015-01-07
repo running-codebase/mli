@@ -6,24 +6,32 @@ TODO
 	- create the fake JSON
 	- return it as a string
 - create handler for success and fail on both create user and login
+- create handler for no combat
 	- create the json parser in the player class that assigns the variables
 	- populate the screen for the returned data
 	- button to find combat
 	- create combat api dummy data and return parsing
-- create handler for no combat
+	- nerf the dual opbject
+	- have it as just a boolean 
+	- Long, Lat, Orientation wrapper
+
+
+- get the longitude stuff in and assign it when required
+- the same with phone orientation
+- Start drawing the images
+
+- get these things showing up together
+
 
 
 
 - attack button api call dummy data and return handeling
-	- Long, Lat, Orientation wrapper
 - fix up the clas to support actual values
 - get player long and lat
 - calculate distance to other point
 - calculate direction to other point
 
 
-	- nerf the dual opbject
-	- have it as just a boolean 
 
 
 FUTURE TODO

@@ -31,6 +31,12 @@ public class Combat {
 
 		}
 	}
+	
+	public int getSecondRemaining() {
+		
+		//TODO - add this implemention
+		return 300;
+	}
 
 	public int getCombatId() {
 		return combatId;

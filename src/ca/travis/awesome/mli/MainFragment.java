@@ -20,14 +20,14 @@ public class MainFragment extends Fragment implements OnClickListener {
 	 private MainFragmentInterface callback;
 	// private Context context;
 
-	private static TextView txtUser;
-	private static TextView txtStatus;
-	private static TextView txtWeapon;
-	private static TextView txtCash;
-	private static TextView txtWinLoss;
-	private static TextView txtEnemyName;
-	private static TextView txtTimeRemaining;
-	private static Button btnFindCombat;
+	private TextView txtUser;
+	private TextView txtStatus;
+	private TextView txtWeapon;
+	private TextView txtCash;
+	private TextView txtWinLoss;
+	private TextView txtEnemyName;
+	private TextView txtTimeRemaining;
+	private Button btnFindCombat;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,7 +83,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 	
 	public void populateCombat(Combat combat) {
 		
-		
+		txtEnemyName.setText(combat.getEnemy().getEnemyName());
+		txtTimeRemaining.setText("" + combat.getSecondRemaining());
 		
 	}
 	
