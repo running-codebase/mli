@@ -6,10 +6,13 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 public class Player {
 
+	private Context context;
 	private boolean initilized = false;
 	private	String userName;
 	private int userId;
@@ -24,10 +27,11 @@ public class Player {
 	private List<DualRecord> dualRecords = new ArrayList<DualRecord>();
 	private LocationAndOrientation locationAndOrientation;
 	
-	public Player () { //TODO - add the dictionary that contains the callback info when creating the user
+	public Player (Context context) { //TODO - add the dictionary that contains the callback info when creating the user
 		//alive = true;
 		//inCombat = false;
 		//weapon = new Weapon();
+		this.context = context;
 	}
 	
 	public void populatePlayerFromJson(String data) {
@@ -47,7 +51,7 @@ public class Player {
 			inCombat = user.getBoolean("in_combat");
 			setCombatId(user.getInt("combat_id"));
 			
-			locationAndOrientation = new LocationAndOrientation();
+			locationAndOrientation = new LocationAndOrientation(context);
 			
 			initilized = true;
     	} catch (JSONException e) {

@@ -31,6 +31,19 @@ public class Combat {
 
 		}
 	}
+
+	/*
+	 
+	 Needs a run loop that triggers the Api call to update things
+	 
+	 Locks on the location values
+	 When we get a return from the api call it assigns values
+	 Creates all the values that are needed for the draw representation
+	 
+	
+	 */
+	
+	
 	
 	public int getSecondRemaining() {
 		

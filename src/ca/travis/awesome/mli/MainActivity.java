@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     	
     	String loginResults = CloudApi.login(userName, password);
     	if (loginResults != null) {
-    		player = new Player();
+    		player = new Player(this);
     		player.populatePlayerFromJson(loginResults);
         	populatePlayerInfoUI();
     	}
