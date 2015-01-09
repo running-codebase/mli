@@ -92,6 +92,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     	String findDualResults = CloudApi.findDual(player.getUserId(), player.getSessionId(), player.getLocationAndOrientation());
     	//TODO - handle a case where there is no dual
     	combat = new Combat(findDualResults);
+    	combat.start();
     	poplateCombatInfoUI();
     	
     }
@@ -162,6 +163,13 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 	@Override
 	public void findDualBtnPressed() {
 		findDual();
+	}
+	
+	@Override
+	public void attack() {
+		if (combat!= null) {
+			combat.runloop = !combat.runloop;
+		}
 	}
 
 }

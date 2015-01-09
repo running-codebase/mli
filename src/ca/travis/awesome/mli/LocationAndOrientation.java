@@ -49,6 +49,7 @@ public class LocationAndOrientation {
 			double latitude = data.getDouble("lat");
 			float bearing = (float) data.getDouble("bearing");
 			int timeStamp =  data.getInt("time_stamp");
+			location = new Location("");
 			location.setLongitude(longitude);
 			location.setLatitude(latitude);
 			location.setBearing(bearing);

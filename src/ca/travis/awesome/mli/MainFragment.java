@@ -14,7 +14,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 
 	public interface MainFragmentInterface {
 		public void findDualBtnPressed();
-		
+		public void attack();
 	}
 
 	 private MainFragmentInterface callback;
@@ -28,7 +28,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 	private TextView txtEnemyName;
 	private TextView txtTimeRemaining;
 	private Button btnFindCombat;
-
+	private Button btnAttack;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -41,9 +42,9 @@ public class MainFragment extends Fragment implements OnClickListener {
         txtEnemyName = (TextView) rootView.findViewById(R.id.txtView_enemy_name);
         txtTimeRemaining = (TextView) rootView.findViewById(R.id.txtView_remaining_time);
         btnFindCombat = (Button) rootView.findViewById(R.id.btn_find_combat);
-        
+        btnAttack = (Button) rootView.findViewById(R.id.btn_attack);
         btnFindCombat.setOnClickListener(this);
-        
+        btnAttack.setOnClickListener(this);
         //TODO - add click listener that gets that makes api call and populates data
 
 		return rootView;
@@ -65,6 +66,9 @@ public class MainFragment extends Fragment implements OnClickListener {
 		switch (view.getId()) {
 		case (R.id.btn_find_combat):
 			callback.findDualBtnPressed();
+			break;
+		case (R.id.btn_attack):
+			callback.attack();
 			break;
 		}
 	}

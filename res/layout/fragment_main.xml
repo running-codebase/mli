@@ -258,6 +258,15 @@
         android:layout_below="@id/center_point_layout"
         android:background="@color/LightGrey" >
 
+        <Button
+            android:id="@+id/btn_attack"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@+string/attack" />
+
     </RelativeLayout>
     
     

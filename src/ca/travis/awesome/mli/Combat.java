@@ -5,8 +5,14 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class Combat {
+public class Combat extends Thread {
 
+	private Thread t;
+	private String threadName = "combat";
+	
+	boolean runloop = true;
+	
+	
 	private int combatId;
 	private int combatStartTime;
 	private int duration; //seconds
@@ -32,6 +38,33 @@ public class Combat {
 		}
 	}
 
+	public void run () {
+
+		try {
+			int count = 1;
+			while (true) {
+				while(runloop) {
+					count ++;
+		    		Log.e("mli", "Thread running: " + count);
+					Thread.sleep(1000);
+				}
+				Thread.sleep(1000);
+			}
+		} catch (InterruptedException e) {
+    		Log.e("mli", "Threading problem: " + e.toString());
+			e.printStackTrace();
+		}
+	}
+	
+	 public void start ()
+	   {
+	      if (t == null)
+	      {
+	         t = new Thread (this, threadName);
+	         t.start ();
+	      }
+	   }
+	
 	/*
 	 
 	 Needs a run loop that triggers the Api call to update things
