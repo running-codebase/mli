@@ -101,6 +101,12 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     	startScreenFragment.populateCombat(combat);
     }
     
+    
+    public void updateCombat() {
+    	CloudApi.combatUpdate(player.getUserId(), player.getSessionId(), player.getLocationAndOrientation(), player.getCombatId());
+    }
+    
+    
 
     //CreateUserOrLoginInterface
 	@Override

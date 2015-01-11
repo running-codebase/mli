@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainFragment extends Fragment implements OnClickListener {
@@ -17,9 +19,10 @@ public class MainFragment extends Fragment implements OnClickListener {
 		public void attack();
 	}
 
-	 private MainFragmentInterface callback;
-	// private Context context;
-
+	private MainFragmentInterface callback;
+	private Activity activity;
+	
+	private RelativeLayout compassLayout;
 	private TextView txtUser;
 	private TextView txtStatus;
 	private TextView txtWeapon;
@@ -29,6 +32,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 	private TextView txtTimeRemaining;
 	private Button btnFindCombat;
 	private Button btnAttack;
+	
+	private View compassView;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,13 +51,20 @@ public class MainFragment extends Fragment implements OnClickListener {
         btnFindCombat.setOnClickListener(this);
         btnAttack.setOnClickListener(this);
         //TODO - add click listener that gets that makes api call and populates data
-
-		return rootView;
+        
+        compassLayout = (RelativeLayout) rootView.findViewById(R.id.compass_layout);
+	    compassView = new CompassView(activity); 
+	    compassLayout.addView(compassView, new LayoutParams(  
+        		RelativeLayout.LayoutParams.MATCH_PARENT,  
+          RelativeLayout.LayoutParams.MATCH_PARENT));  
+        
+   		return rootView;
 	}
 
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
+		this.activity = activity;
 		try {
 			callback = (MainFragmentInterface) activity;
 		} catch (ClassCastException e) {
@@ -83,14 +95,16 @@ public class MainFragment extends Fragment implements OnClickListener {
 		txtWeapon.setText("Wand");
 		txtCash.setText("" + player.getCash());
 		txtWinLoss.setText("" + player.getWins() + "/" + player.getLosses());
+		
+		((CompassView)compassView).setPlayer(player);
 	}
 	
 	public void populateCombat(Combat combat) {
 		
 		txtEnemyName.setText(combat.getEnemy().getEnemyName());
 		txtTimeRemaining.setText("" + combat.getSecondRemaining());
-		
+
+		((CompassView)compassView).setCombat(combat);
 	}
-	
 	
 }

@@ -51,7 +51,7 @@ public class CloudApi {
 		//3. Network Error
 	}
 
-	public static String combatMode(/*coordinates, dual_id*/) {
+	public static String combatUpdate(int userId, int sessionId, LocationAndOrientation locationAndOrientation, int combatId) {
 		//Returns
 		//1. Success you are in combat mode
 		//2. You are not in combat mode (error)
@@ -59,10 +59,10 @@ public class CloudApi {
 		return "";
 	}
 	
-	public static String currentState(/*coordinates, dual_id*/) {
-		//TODO - figure out the implementation for this later. 
-		return "";
-	}
+//	public static String currentState(/*coordinates, dual_id*/) {
+//		//TODO - figure out the implementation for this later. 
+//		return "";
+//	}
 	
 	
 	public static String attack(/*coordinates, dual_id*/) {

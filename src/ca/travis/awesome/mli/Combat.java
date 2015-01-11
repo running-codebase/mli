@@ -45,8 +45,12 @@ public class Combat extends Thread {
 			while (true) {
 				while(runloop) {
 					count ++;
-		    		Log.e("mli", "Thread running: " + count);
-					Thread.sleep(1000);
+		    		//Log.e("mli", "Thread running: " + count);
+	
+		    		//Calculate the new angles and data for the drawing
+		    		//Maybe update the cloud with an api call about current state
+		    		
+		    		Thread.sleep(1000);
 				}
 				Thread.sleep(1000);
 			}
@@ -64,18 +68,6 @@ public class Combat extends Thread {
 	         t.start ();
 	      }
 	   }
-	
-	/*
-	 
-	 Needs a run loop that triggers the Api call to update things
-	 
-	 Locks on the location values
-	 When we get a return from the api call it assigns values
-	 Creates all the values that are needed for the draw representation
-	 
-	
-	 */
-	
 	
 	
 	public int getSecondRemaining() {

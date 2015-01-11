@@ -184,7 +184,7 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f090025;
-        public static final int btn_attack=0x7f090024;
+        public static final int btn_attack=0x7f090023;
         public static final int btn_create_user=0x7f090006;
         public static final int btn_find_combat=0x7f090019;
         public static final int btn_login=0x7f090005;
@@ -193,7 +193,7 @@ public final class R {
         public static final int chkbx_stay_logged_in=0x7f090004;
         public static final int combat_info_layout=0x7f09001a;
         public static final int combat_title_layout=0x7f09001b;
-        public static final int compass_layout=0x7f090023;
+        public static final int compass_layout=0x7f090024;
         public static final int container=0x7f090000;
         public static final int enemy_name_layout=0x7f09001d;
         public static final int password=0x7f090003;

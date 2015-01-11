@@ -15,11 +15,10 @@ TODO
 	- have it as just a boolean 
 	- Long, Lat, Orientation wrapper
 
+	- the player object has a way to call up the chain when it is updated so that is passed to the cloud.
 
-
-
-- get the longitude stuff in and assign it when required
-- the same with phone orientation
+	- get the longitude stuff in and assign it when required
+	- the same with phone orientation
 - Start drawing the images
 
 

@@ -13,6 +13,11 @@ import android.util.Log;
 
 public class LocationAndOrientation {
 
+	
+	public interface LocationUpdate {
+		public void locationUpdated();
+	}
+	
 	private Location location;
 	
 	public LocationAndOrientation(Context context) {
