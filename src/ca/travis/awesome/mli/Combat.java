@@ -17,10 +17,12 @@ public class Combat extends Thread {
 	private int combatStartTime;
 	private int duration; //seconds
 	private Enemy enemy;
+	private Player player;
 	
-	public Combat(String data) {
+	public Combat(String data, Player player) {
 		Log.d("mli", "Parsing combat object");
-
+		this.player = player;
+		
 		try {
 			JSONObject reader = new JSONObject(data);
 			JSONObject dual = reader.getJSONObject("dual");
@@ -45,7 +47,10 @@ public class Combat extends Thread {
 			while (true) {
 				while(runloop) {
 					count ++;
-		    		//Log.e("mli", "Thread running: " + count);
+
+					
+					
+					Log.e("mli", "Bearing: " + player.getLocationAndOrientation().getLocation().getBearing());
 	
 		    		//Calculate the new angles and data for the drawing
 		    		//Maybe update the cloud with an api call about current state
