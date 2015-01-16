@@ -79,12 +79,11 @@ public class CompassView extends View {
 		super.onDraw(canvas);
 		if (combat != null && player != null) {
 
-			//TODO - remove me
-			rotation +=1;
-			if (rotation > 360) {
-				rotation = 0;
-			}
-
+//			if (player.getLocationAndOrientation().getOrientation()[0] == null) {
+				rotation = -player.getLocationAndOrientation().getOrientation()[0]*360/(2*3.14159f);
+//			}
+			
+	
 			
 			canvas.save(Canvas.MATRIX_SAVE_FLAG); //Saving the canvas and later restoring it so only this image will be rotated.
 			canvas.rotate(rotation, centX, centY);//player.getLocationAndOrientation().getLocation().getBearing());
