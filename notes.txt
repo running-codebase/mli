@@ -19,16 +19,30 @@ TODO
 
 	- get the longitude stuff in and assign it when required
 	- the same with phone orientation
-- Start drawing the images
+	- Start drawing the images
+	- get these things showing up together
 
 
-- get these things showing up together
+
+
+
+START
+Create an enemy at player position + 50meters north
+Calculate the distance bewteen two points
+Calculate the angle between two points
+
+Set up the attack button with a check and then have it return succesful if conditions are met
+
+Dialog that ends the combat
+
+
+
 
 - create the attack api 
-- create th combat resolution section
+- create the combat resolution section
 
 - attack button api call dummy data and return handeling
-- fix up the clas to support actual values
+- fix up the class to support actual values
 - get player long and lat
 - calculate distance to other point
 - calculate direction to other point
