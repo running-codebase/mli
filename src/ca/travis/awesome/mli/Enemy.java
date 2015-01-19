@@ -9,7 +9,7 @@ public class Enemy {
 	
 	private int enemyId;
 	private String enemyName;
-	private LocationAndOrientation locationAndOrientation;
+	private LocationWrapper location;
 	
 	public Enemy(JSONObject enemy) {
 		Log.d("mli", "Parsing enemy object");
@@ -17,7 +17,7 @@ public class Enemy {
 		try {
 			enemyId = enemy.getInt("enemy_id");
 			enemyName = enemy.getString("enemy_name");
-			locationAndOrientation = new LocationAndOrientation(enemy.getJSONObject("location_and_orientation"));
+			location = new LocationWrapper(enemy.getJSONObject("location_and_orientation"));
 		} catch (JSONException e) {
     		Log.e("mli", "jsonexception: " + e.toString());
 			e.printStackTrace();
@@ -33,11 +33,11 @@ public class Enemy {
 		return enemyName;
 	}
 	
-	public LocationAndOrientation getLocationAndOrientation() {
-		return locationAndOrientation;
+	public LocationWrapper getLocationWrapper() {
+		return location;
 	}
 
-	public void setLocationAndOrientation(JSONObject data) {
-		this.locationAndOrientation.updateValues(data);
+	public void setLocation(JSONObject data) {
+		this.location.updateValues(data);
 	}
 }

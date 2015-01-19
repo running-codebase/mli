@@ -27,14 +27,19 @@ TODO
 
 
 START
-Create an enemy at player position + 50meters north
-Calculate the distance bewteen two points
-Calculate the angle between two points
 
-Set up the attack button with a check and then have it return succesful if conditions are met
+
+	Create an enemy at player position + 50meters north
+	Refactor out location and orientation
+
+	Calculate the distance bewteen two points
+	Calculate the angle between two points
+
+	Set up the attack button with a check and then have it return succesful if conditions are met
 
 Dialog that ends the combat
 
+Close the combat
 
 
 
@@ -42,10 +47,10 @@ Dialog that ends the combat
 - create the combat resolution section
 
 - attack button api call dummy data and return handeling
-- fix up the class to support actual values
-- get player long and lat
-- calculate distance to other point
-- calculate direction to other point
+	- fix up the class to support actual values
+	- get player long and lat
+	- calculate distance to other point
+	- calculate direction to other point
 
 
 

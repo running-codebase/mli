@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,7 +19,8 @@ public class CompassView extends View {
 	private Path path;
 	private Bitmap mBitmap;
 	private Canvas mCanvas;
-	private Paint mPaint; 
+	private Paint yellowPaint; 
+	private Paint redPaint; 
 
 	private float rotation = 0.0f;
 	
@@ -39,13 +41,22 @@ public class CompassView extends View {
 	}
 
 	private void initPaint() {
-		mPaint = new Paint();
-		mPaint.setDither(true);
-		mPaint.setColor(0xFFFFFF00);
-		mPaint.setStyle(Paint.Style.STROKE);
-		mPaint.setStrokeJoin(Paint.Join.ROUND);
-		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(3);
+		yellowPaint = new Paint();
+		yellowPaint.setDither(true);
+		yellowPaint.setColor(0xFFFFFF00);
+		yellowPaint.setStyle(Paint.Style.STROKE);
+		yellowPaint.setStrokeJoin(Paint.Join.ROUND);
+		yellowPaint.setStrokeCap(Paint.Cap.ROUND);
+		yellowPaint.setStrokeWidth(3);
+
+		redPaint = new Paint();
+		redPaint.setDither(true);
+		redPaint.setColor(0xFFFF0000);
+		redPaint.setStyle(Paint.Style.STROKE);
+		redPaint.setStrokeJoin(Paint.Join.ROUND);
+		redPaint.setStrokeCap(Paint.Cap.ROUND);
+		redPaint.setStrokeWidth(3);
+
 	}
 	
 	public void setPlayer(Player player) {
@@ -79,19 +90,33 @@ public class CompassView extends View {
 		super.onDraw(canvas);
 		if (combat != null && player != null) {
 
-//			if (player.getLocationAndOrientation().getOrientation()[0] == null) {
-				rotation = -player.getLocationAndOrientation().getOrientation()[0]*360/(2*3.14159f);
-//			}
+			rotation = -player.getOrientationWrapper().getOrientation()[0]*360/(2*3.14159f); //North direction
 			
-	
-			
-			canvas.save(Canvas.MATRIX_SAVE_FLAG); //Saving the canvas and later restoring it so only this image will be rotated.
-			canvas.rotate(rotation, centX, centY);//player.getLocationAndOrientation().getLocation().getBearing());
+			//Draw the hit zone
 
-			canvas.drawCircle(centX, centY, boundingRadius, mPaint);
-			canvas.drawText("N",centX , centY - boundingRadius - 20, mPaint);
+			if (combat.inRange) {
+				RectF oval = new RectF(centX - boundingRadius ,centY - boundingRadius , centX + boundingRadius, centY + boundingRadius);
+				canvas.drawArc(oval, -100, 20 , true, redPaint); //-100 brings it back to -10 of north, 20 is the number of degrees 
+			} else {
+				RectF oval = new RectF(centX - boundingRadius ,centY - boundingRadius , centX + boundingRadius, centY + boundingRadius);
+				canvas.drawArc(oval, -100, 20 , true, yellowPaint); //-100 brings it back to -10 of north, 20 is the number of degrees 
+			}
 			
+			//Draw north
+			canvas.save(Canvas.MATRIX_SAVE_FLAG); 
+			canvas.rotate(rotation, centX, centY);
+			canvas.drawCircle(centX, centY, boundingRadius, yellowPaint);
+			canvas.drawText("N",centX , centY - boundingRadius - 20, yellowPaint);
 			canvas.restore();
+
+			//Draw the bad guy
+			canvas.save(Canvas.MATRIX_SAVE_FLAG); 
+			canvas.rotate((float)combat.bearingToEnemy() + rotation, centX, centY);
+			//canvas.drawCircle(centX, centY, boundingRadius, mPaint);
+			canvas.drawText("o",centX , centY - boundingRadius - 20, redPaint);
+			canvas.restore();
+
+			
 			
 			
 		};

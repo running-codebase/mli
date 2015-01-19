@@ -39,10 +39,10 @@ public class CloudApi {
 	}
 	
 	
-	public static String findDual(int userId, int sessionId, LocationAndOrientation locationAndOrientation) { //try to get matched for duel
+	public static String findDual(int userId, int sessionId, LocationWrapper locationWrapper, OrientationWrapper orientation) { //try to get matched for duel
 		
 		String results = "{ \"dual\" : { \"dual_id\" : 111111, \"start_time\" : 111111, \"duration\" : 1111111 }, " +
-				" \"enemy\" : { \"enemy_id\" : 1111 , \"enemy_name\" : \"Grendar\", \"location_and_orientation\" : { \"long\" : 10.123, \"lat\" :10.123 , \"bearing\" : 90.0 , \"time_stamp\" : 1111 }}}";
+				" \"enemy\" : { \"enemy_id\" : 1111 , \"enemy_name\" : \"Grendar\", \"location_and_orientation\" : { \"long\" : -79.396914, \"lat\" :43.658054 , \"bearing\" : 90.0 , \"time_stamp\" : 1111 }}}";
 		
 		return results;
 		//Returns 
@@ -51,7 +51,7 @@ public class CloudApi {
 		//3. Network Error
 	}
 
-	public static String combatUpdate(int userId, int sessionId, LocationAndOrientation locationAndOrientation, int combatId) {
+	public static String combatUpdate(int userId, int sessionId, LocationWrapper locationWrapper, OrientationWrapper orientation, int combatId) {
 		//Returns
 		//1. Success you are in combat mode
 		//2. You are not in combat mode (error)
@@ -65,12 +65,14 @@ public class CloudApi {
 //	}
 	
 	
-	public static String attack(/*coordinates, dual_id*/) {
+	public static String attack(Player player, Combat combat ) {
+		
+		String results = "{ \"attack_success\" : true , \"message\" : \"\" }";
 		//Returns
 		//1. Success combat over
 		//2. Failure (error)
 		//3. Network Error 
-		return "";
+		return results;
 	}
 	
 }

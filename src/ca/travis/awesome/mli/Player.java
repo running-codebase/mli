@@ -6,7 +6,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ca.travis.awesome.mli.LocationAndOrientation.LocationUpdate;
+import ca.travis.awesome.mli.LocationWrapper.LocationUpdate;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,7 +28,10 @@ public class Player implements LocationUpdate {
 	private int combatId;
 	private Weapon weapon;
 	private List<DualRecord> dualRecords = new ArrayList<DualRecord>();
-	private LocationAndOrientation locationAndOrientation;
+	private LocationWrapper locationWrapper;
+	private OrientationWrapper orientation;
+
+	
 	
 	public Player (MainActivity activity) { //TODO - add the dictionary that contains the callback info when creating the user
 		//alive = true;
@@ -55,7 +58,8 @@ public class Player implements LocationUpdate {
 			inCombat = user.getBoolean("in_combat");
 			setCombatId(user.getInt("combat_id"));
 			
-			locationAndOrientation = new LocationAndOrientation(context);
+			locationWrapper = new LocationWrapper(context);
+			orientation = new OrientationWrapper(context);
 			
 			initilized = true;
     	} catch (JSONException e) {
@@ -123,8 +127,12 @@ public class Player implements LocationUpdate {
 		return dualRecords;
 	}
 
-	public LocationAndOrientation getLocationAndOrientation() {
-		return locationAndOrientation;
+	public LocationWrapper getLocationWrapper() {
+		return locationWrapper;
+	}
+	
+	public OrientationWrapper getOrientationWrapper() {
+		return orientation;
 	}
 
 	public int getCombatId() {

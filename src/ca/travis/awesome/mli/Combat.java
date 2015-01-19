@@ -11,13 +11,15 @@ public class Combat extends Thread {
 	private String threadName = "combat";
 	
 	boolean runloop = true;
-	
+	boolean inRange = false;
 	
 	private int combatId;
 	private int combatStartTime;
 	private int duration; //seconds
 	private Enemy enemy;
 	private Player player;
+	
+	
 	
 	public Combat(String data, Player player) {
 		Log.d("mli", "Parsing combat object");
@@ -50,12 +52,20 @@ public class Combat extends Thread {
 
 					
 					
-					Log.e("mli", "Bearing: " + player.getLocationAndOrientation().getLocation().getBearing());
 	
 		    		//Calculate the new angles and data for the drawing
 		    		//Maybe update the cloud with an api call about current state
-		    		
-		    		Thread.sleep(1000);
+
+					
+					if (Math.abs(adjustedBearingToEnemy()) <= 10 ) {
+						Log.e("mli", "Bearing to enemy: " + Math.abs(adjustedBearingToEnemy()));
+						inRange = true;
+					} else {
+						inRange = false;
+					}
+					
+					
+		    		Thread.sleep(330);
 				}
 				Thread.sleep(1000);
 			}
@@ -74,7 +84,23 @@ public class Combat extends Thread {
 	      }
 	   }
 	
-	
+	 
+	 public double distanceToEnemy() {
+		 return player.getLocationWrapper().getLocation().distanceTo(enemy.getLocationWrapper().getLocation());
+	 }
+	 
+	 
+	 public double bearingToEnemy() { //angle position from north to enemy
+		 return player.getLocationWrapper().getLocation().bearingTo(enemy.getLocationWrapper().getLocation());
+	 }
+	 
+	 public double adjustedBearingToEnemy() {
+		 return player.getLocationWrapper().getLocation().bearingTo(enemy.getLocationWrapper().getLocation()) - player.getOrientationWrapper().getOrientation()[0]*360/(2*3.14159f);
+	 }
+
+	 
+
+	 
 	public int getSecondRemaining() {
 		
 		//TODO - add this implemention

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import ca.travis.awesome.mli.DialogCreateUserFragment.CreateUserInterface;
 import ca.travis.awesome.mli.DialogCreateUserOrLoginFragment.CreateUserOrLoginInterface;
 import ca.travis.awesome.mli.DialogLoginFragment.LoginInterface;
@@ -89,10 +90,11 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     
     private void findDual() {
 
-    	String findDualResults = CloudApi.findDual(player.getUserId(), player.getSessionId(), player.getLocationAndOrientation());
+    	String findDualResults = CloudApi.findDual(player.getUserId(), player.getSessionId(), player.getLocationWrapper(), player.getOrientationWrapper());
     	//TODO - handle a case where there is no dual
     	combat = new Combat(findDualResults, player);
     	combat.start();
+
     	poplateCombatInfoUI();
     	
     }
@@ -103,7 +105,11 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     
     
     public void updateCombat() {
-    	CloudApi.combatUpdate(player.getUserId(), player.getSessionId(), player.getLocationAndOrientation(), player.getCombatId());
+    	CloudApi.combatUpdate(player.getUserId(), player.getSessionId(), player.getLocationWrapper(), player.getOrientationWrapper(), player.getCombatId());
+    }
+    
+    private void combatCompletedSequence() {
+    	Toast.makeText(this, "You killed your enemy", Toast.LENGTH_LONG).show();
     }
     
     
@@ -173,8 +179,26 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 	
 	@Override
 	public void attack() {
-		if (combat!= null) {
-			combat.runloop = !combat.runloop;
+		if (combat.inRange) {
+    		Log.e("mli", "attacking ");
+
+			String attackResults = CloudApi.attack(player, combat);
+			
+			try {
+				JSONObject reader = new JSONObject(attackResults);
+	    		Log.e("mli", "reading");
+				if (reader.getBoolean("attack_success")) {
+		    		Log.e("mli", "success ");
+					combatCompletedSequence();
+				} else {
+					//TODO - handle the combat not over thing
+				}
+				
+			} catch (JSONException e) {
+	    		Log.e("mli", "jsonexception: " + e.toString());
+				e.printStackTrace();
+
+			}
 		}
 	}
 
