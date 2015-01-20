@@ -88,7 +88,7 @@ public class CompassView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		if (combat != null && player != null) {
+		if (combat!= null && combat.inCombat && player != null) {
 
 			rotation = -player.getOrientationWrapper().getOrientation()[0]*360/(2*3.14159f); //North direction
 			
@@ -119,7 +119,8 @@ public class CompassView extends View {
 			
 			
 			
-		};
+		}
+		
 		this.invalidate();
 	}
 	

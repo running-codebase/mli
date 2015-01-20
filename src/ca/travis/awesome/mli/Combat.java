@@ -10,6 +10,7 @@ public class Combat extends Thread {
 	private Thread t;
 	private String threadName = "combat";
 	
+	boolean inCombat = false;
 	boolean runloop = true;
 	boolean inRange = false;
 	
@@ -34,6 +35,7 @@ public class Combat extends Thread {
 			
 			JSONObject enemyJson = reader.getJSONObject("enemy");
 			enemy = new Enemy(enemyJson);
+			inCombat = true;
 			
 		} catch (JSONException e) {
     		Log.e("mli", "jsonexception: " + e.toString());
@@ -98,6 +100,9 @@ public class Combat extends Thread {
 		 return player.getLocationWrapper().getLocation().bearingTo(enemy.getLocationWrapper().getLocation()) - player.getOrientationWrapper().getOrientation()[0]*360/(2*3.14159f);
 	 }
 
+	 public void resolveCombat(boolean inCombat) {
+		 this.inCombat = inCombat;
+	 }
 	 
 
 	 

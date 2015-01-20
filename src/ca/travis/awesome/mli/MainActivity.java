@@ -110,6 +110,7 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     
     private void combatCompletedSequence() {
     	Toast.makeText(this, "You killed your enemy", Toast.LENGTH_LONG).show();
+    	combat.resolveCombat(false);
     }
     
     
