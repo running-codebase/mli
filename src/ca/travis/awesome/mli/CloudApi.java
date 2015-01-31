@@ -2,6 +2,8 @@ package ca.travis.awesome.mli;
 
 import android.util.Log;
 
+import com.firebase.client.Firebase;
+
 public class CloudApi {
 
 	public static String createAccount(String userName, String HashedPassword) {
@@ -18,6 +20,20 @@ public class CloudApi {
 	}
 
 	public static String login(String userName, String hashedPassword) {
+		
+		Firebase ref = new Firebase("https://mli-tester.firebaseio.com/");
+		
+		Firebase usersRef = ref.child("users");
+		
+		usersRef.child(userName).child("long").setValue(-79.396914);
+		usersRef.child(userName).child("lat").setValue(43.658054);
+		usersRef.child(userName).child("timestamp").setValue(100000);
+		
+		
+		
+		
+		//-------------------------------
+		
 		Log.d("mli", "Cloud Call: Login");
 		
 		String results = "{ \"user\": {" +

@@ -1,10 +1,19 @@
 package ca.travis.awesome.mli;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +26,9 @@ public class DialogLoginFragment extends DialogFragment {
 	private EditText userName;
 	private EditText password;
 	private CheckBox chkbxStayLoggedIn;
+	
+	private Map<String, String> userList;
+
 	
 	public interface LoginInterface {
 	    boolean onLogin(String userName, String password, Boolean stayLoggedIn); 
@@ -33,6 +45,7 @@ public class DialogLoginFragment extends DialogFragment {
 	    userName = (EditText) view.findViewById(R.id.user_name);
 	    password = (EditText) view.findViewById(R.id.password);
 	    chkbxStayLoggedIn = (CheckBox) view.findViewById(R.id.chkbx_stay_logged_in);
+	    userList = new HashMap<String, String>();
 	    
 	    builder.setView(view)
 	           .setPositiveButton(R.string.ok, null)
@@ -58,6 +71,17 @@ public class DialogLoginFragment extends DialogFragment {
 		            		   return;
 		            	   }
 		            	   
+		            	   if (userList.isEmpty()){
+		            		   Toast.makeText(getActivity(), "we have not retrieved the user list yet", Toast.LENGTH_LONG).show();
+		            		   return;
+		            	   }
+		            	   
+		            	   if (!userList.containsKey(userName.getText().toString())) {
+		            		   Toast.makeText(getActivity(), "This user does not exist", Toast.LENGTH_LONG).show();
+		            		   return;
+		            	   }
+		            	   
+		            	   
 		            	   LoginInterface activity = (LoginInterface) getActivity();
 		            	   boolean results = activity.onLogin(userName.getText().toString(), password.getText().toString(), chkbxStayLoggedIn.isChecked());	 
 		            	   
@@ -81,6 +105,32 @@ public class DialogLoginFragment extends DialogFragment {
 				});
 			}
 		});
+	    
+	    
+		Firebase myFirebaseRef = new Firebase("https://mli-tester.firebaseio.com/userlist/");
+        myFirebaseRef.addChildEventListener(new ChildEventListener() {
+            // Retrieve new posts as they are added to Firebase
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+
+            	Map<String, String> newUser = (Map<String, String>) snapshot.getValue();
+            	userList.put(newUser.get("name"), newUser.get("hashedpass"));
+            	Log.d("mli", "added user: " + newUser.get("name"));
+            }
+
+			@Override
+			public void onCancelled(FirebaseError arg0) {}
+
+			@Override
+			public void onChildChanged(DataSnapshot arg0, String arg1) {}
+	
+			@Override
+			public void onChildMoved(DataSnapshot arg0, String arg1) {}
+
+			@Override
+			public void onChildRemoved(DataSnapshot arg0) {}
+        });
+	    
 	    return d;
 	}
 }

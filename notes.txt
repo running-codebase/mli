@@ -101,7 +101,55 @@ user {
 	dual_id : 0
 	}
 	
-C	
+	
+So using firebase we can do a lot of stuff. I think it is the way to go here. Hmm but there are many thing to think about. 
+
+
+
+So what this would allow me to do would be to create a set of objects that can be shared betwen users. I wouldnt be doing the actual calculation on the cloud
+The power would be that they would be updated in real time. 
+
+So how does this implementation come to be?
+
+I still dont 100 percent see how I use this. hmmm. 
+
+Well how would the combat be started
+
+Think simple. 
+
+You log in. By doing so you update your location. When you do so you get a list of active users. If you kill them they leave the map
+
+
+
+
+For this to work we would need users to login 
+
+
+Then you need to be able to see a list of users. 
+
+
+As well you need to be able to see them on a map. 
+
+
+You could totally add a murder ring element to this. It would be easier to kill people by being near them but to see them you would need to show up on the map.
+
+
+So first I need a user object that is written when the users logs in. We dismiss the login when the user 
+
+
+Simple user creation 
+name: long: lat: timestamp:
+
+So now I can create a user and I can login to a user. 
+
+I feel like much of this app needs to be rewritten. But at the same time it is still quite simple. Basically what I need references objects. Those objects should have referecnes to there cloud entities and 
+exist in an initiallized state or not. 
+
+
+
+So what to do now. You can crete a user and you can 
+
+
 	
 
 

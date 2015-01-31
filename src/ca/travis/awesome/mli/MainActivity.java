@@ -1,5 +1,8 @@
 package ca.travis.awesome.mli;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,6 +19,11 @@ import ca.travis.awesome.mli.DialogCreateUserOrLoginFragment.CreateUserOrLoginIn
 import ca.travis.awesome.mli.DialogLoginFragment.LoginInterface;
 import ca.travis.awesome.mli.MainFragment.MainFragmentInterface;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 public class MainActivity extends Activity implements CreateUserOrLoginInterface, CreateUserInterface, LoginInterface, MainFragmentInterface {
 
 	private FragmentManager fragmentManager;
@@ -24,6 +32,8 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 	private MainFragment startScreenFragment;
 	private Player player; //The user class
 	private Combat combat; 
+	private User user;
+	
 	
 	
     @Override
@@ -32,6 +42,8 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 
         showMainFragment();
         showLoginDialog();
+        
+        Firebase.setAndroidContext(this);
     }
     
     private void showMainFragment() {
@@ -70,13 +82,15 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
     }
     
     private boolean logUserIn(String userName, String password) {
+
+    	user = new User(this, userName, true);
     	
-    	String loginResults = CloudApi.login(userName, password);
-    	if (loginResults != null) {
-    		player = new Player(this);
-    		player.populatePlayerFromJson(loginResults);
-        	populatePlayerInfoUI();
-    	}
+//    	String loginResults = CloudApi.login(userName, password);
+//    	if (loginResults != null) {
+//    		player = new Player(this);
+//    		player.populatePlayerFromJson(loginResults);
+//        	populatePlayerInfoUI();
+//    	}
     	//TODO - save the boolean so we auto login in the future
     	return true;
     }
@@ -163,6 +177,8 @@ public class MainActivity extends Activity implements CreateUserOrLoginInterface
 	@Override
 	public boolean onLogin(String userName, String password,
 			Boolean stayLoggedIn) {
+		
+		
 		return logUserIn(userName, password);
 	}
 	@Override
